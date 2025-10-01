@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "smartSkipButton.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
