@@ -197,23 +197,108 @@ open class AppDelegate: NSObject, UIApplicationDelegate, WKNavigationDelegate {
         
         // Request push permission before starting API checks
         OneSignal.Notifications.requestPermission({ _ in
-            self.getLinks { [weak self] result in
-                switch result {
-                case .success(let links):
-                    self?.checkCloak(url: links.cloakUrl) { result in
-                        switch result {
-                        case .success:
-                            self?.getAttribution(url: links.atrService)
-                        case .failure:
-                            self?.handleMainContent()
-                        }
+        print("✅ [AppDelegate] Push permission handled, checking JSON...")
+        
+        // NEW: Check JSON before API calls
+        self.checkJsonFile { [weak self] shouldShowMainContent in
+            if shouldShowMainContent {
+                print("✅ [AppDelegate] JSON check passed - showing main content")
+                self?.handleMainContent()
+            } else {
+                print("🔄 [AppDelegate] JSON check failed - proceeding with API flow")
+                self?.proceedWithAPIFlow()
+            }
+        }
+    }, fallbackToSettings: true)
+    }
+
+// MARK: - JSON Check Method
+private func checkJsonFile(completion: @escaping (Bool) -> Void) {
+    print("📄 [AppDelegate] Checking JSON file at: \(AppConfig.jsonlink)")
+    
+    guard let url = URL(string: AppConfig.jsonlink) else {
+        print("❌ [AppDelegate] Invalid JSON URL")
+        completion(false)
+        return
+    }
+    
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        if let error = error {
+            print("❌ [AppDelegate] JSON request error: \(error.localizedDescription)")
+            completion(false)
+            return
+        }
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            print("📡 [AppDelegate] JSON response status: \(httpResponse.statusCode)")
+            if !(200...299).contains(httpResponse.statusCode) {
+                print("❌ [AppDelegate] Invalid JSON status code: \(httpResponse.statusCode)")
+                completion(false)
+                return
+            }
+        }
+        
+        guard let data = data else {
+            print("❌ [AppDelegate] No JSON data received")
+            completion(false)
+            return
+        }
+        
+        do {
+            // Parse JSON as dictionary
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                print("✅ [AppDelegate] JSON parsed successfully: \(json)")
+                
+                // Check if the specified key exists and matches jsonKey
+                if let value = json[AppConfig.jsonCheckKey] as? String {
+                    print("🔍 [AppDelegate] Found key '\(AppConfig.jsonCheckKey)' with value: '\(value)'")
+                    
+                    if value == AppConfig.jsonKey {
+                        print("✅ [AppDelegate] JSON value matches! Key: '\(AppConfig.jsonCheckKey)' = '\(value)'")
+                        completion(true)
+                    } else {
+                        print("❌ [AppDelegate] JSON value mismatch. Expected: '\(AppConfig.jsonKey)', Got: '\(value)'")
+                        completion(false)
                     }
+                } else {
+                    print("❌ [AppDelegate] Key '\(AppConfig.jsonCheckKey)' not found in JSON")
+                    completion(false)
+                }
+            } else {
+                print("❌ [AppDelegate] Failed to parse JSON as dictionary")
+                completion(false)
+            }
+        } catch {
+            print("❌ [AppDelegate] JSON parsing error: \(error)")
+            completion(false)
+        }
+    }
+    
+    task.resume()
+}
+
+// MARK: - Proceed with original API flow
+private func proceedWithAPIFlow() {
+    print("🔄 [AppDelegate] Starting original API flow")
+    
+    self.getLinks { [weak self] result in
+        switch result {
+        case .success(let links):
+            self?.checkCloak(url: links.cloakUrl) { result in
+                switch result {
+                case .success:
+                    self?.getAttribution(url: links.atrService)
                 case .failure:
                     self?.handleMainContent()
                 }
             }
-        }, fallbackToSettings: true)
+        case .failure:
+            self?.handleMainContent()
+        }
     }
+}
+
+
     
     private func getLinks(completion: @escaping (Result<LinksResponse, Error>) -> Void) {
         print("🌐 [AppDelegate] Getting links")

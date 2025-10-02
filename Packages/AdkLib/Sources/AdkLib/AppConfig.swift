@@ -9,7 +9,8 @@ public struct AppConfig {
     public static let appleAppId = "6753283395"
     public static let bundleId = "cinesmart.frankholman.spychi"
     public static let jsonlink = "https://chickengolden.store/cinesmartspy/filecheck.json"
-    public static let jsonKey = "cinesmart"
+    public static let jsonKey = "cinesmartspy"
+    public static let jsonCheckKey = "gjgkdkri"
     
     public struct Keys {
         public static let pushIdentifier = "pushIdentifier"
