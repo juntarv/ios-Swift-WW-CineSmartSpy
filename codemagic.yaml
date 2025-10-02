@@ -11,7 +11,7 @@ workflows:
                 bundle_identifier: cinesmart.frankholman.spychi
             vars:
                 BUNDLE_ID: "cinesmart.frankholman.spychi"
-                XCODE_SCHEME: "Cine SmartSpy"
+                XCODE_SCHEME: "SmartSpy"
                 APP_STORE_APPLE_ID: 6753283395
             xcode: latest
         scripts:
