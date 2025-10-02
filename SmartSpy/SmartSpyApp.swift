@@ -1,17 +1,16 @@
 import SwiftUI
 import AdkLib
 
-
 @main
 struct SmartSpyApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate // 2 подключение апделег
+    @UIApplicationDelegateAdaptor(AdkLib.AppDelegate.self) private var appDelegate
     
     @StateObject private var globalManager = SmartGlobalManager()
 
     var body: some Scene {
         WindowGroup {
-            RemoteScreen{
-                SmartLaunchView()
+            RemoteScreen {
+                SmartMenuView()
                     .environmentObject(globalManager)
             }
         }

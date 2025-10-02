@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4068CCF32E8A7BAC009DAE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4068CCEE2E8A7BAC009DAE08 /* Assets.xcassets */; };
-		4068CCF42E8A7BAC009DAE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068CCED2E8A7BAC009DAE08 /* AppDelegate.swift */; };
 		4068CCF52E8A7BAC009DAE08 /* SmartHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068CCEF2E8A7BAC009DAE08 /* SmartHelpers.swift */; };
 		4068CCF62E8A7BAC009DAE08 /* SmartLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068CCF02E8A7BAC009DAE08 /* SmartLaunchView.swift */; };
 		4068CCF72E8A7BAC009DAE08 /* SmartSpyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068CCF12E8A7BAC009DAE08 /* SmartSpyApp.swift */; };
@@ -30,7 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4068CCED2E8A7BAC009DAE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4068CCEE2E8A7BAC009DAE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4068CCEF2E8A7BAC009DAE08 /* SmartHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHelpers.swift; sourceTree = "<group>"; };
 		4068CCF02E8A7BAC009DAE08 /* SmartLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLaunchView.swift; sourceTree = "<group>"; };
@@ -49,7 +47,8 @@
 		40A5A7622E8ABF5600742AAA /* SmartRewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRewardsView.swift; sourceTree = "<group>"; };
 		40A5A7A62E8AC7E100742AAA /* SmartPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPauseView.swift; sourceTree = "<group>"; };
 		40A5A7A82E8AC8DD00742AAA /* SmartResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartResultView.swift; sourceTree = "<group>"; };
-		513DE3662E8DDA9900C82071 /* SmartSpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SmartSpy.app; path = "/Users/juntarv/Desktop/WWapps/SmartSpyArt/build/Debug-iphoneos/SmartSpy.app"; sourceTree = "<absolute>"; };
+		513DE4BA2E8E753E00C82071 /* SmartSpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartSpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		513DE4BB2E8E7AEE00C82071 /* SmartSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartSpy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +68,14 @@
 			isa = PBXGroup;
 			children = (
 				4068CCF22E8A7BAC009DAE08 /* SmartSpy */,
+				513DE4BA2E8E753E00C82071 /* SmartSpy.app */,
 			);
 			sourceTree = "<group>";
 		};
 		4068CCF22E8A7BAC009DAE08 /* SmartSpy */ = {
 			isa = PBXGroup;
 			children = (
+				513DE4BB2E8E7AEE00C82071 /* SmartSpy.entitlements */,
 				4068CCEF2E8A7BAC009DAE08 /* SmartHelpers.swift */,
 				4068CCF02E8A7BAC009DAE08 /* SmartLaunchView.swift */,
 				4068CCFB2E8A7BE6009DAE08 /* SmartMenuView.swift */,
@@ -92,7 +93,6 @@
 				408A2D482E8BE0C100C41792 /* smartPersonCollectSound.mp3 */,
 				4068CCF82E8A7BBF009DAE08 /* SmartLaunchScreen.storyboard */,
 				4068CCF12E8A7BAC009DAE08 /* SmartSpyApp.swift */,
-				4068CCED2E8A7BAC009DAE08 /* AppDelegate.swift */,
 				4068CCFA2E8A7BD7009DAE08 /* Info.plist */,
 			);
 			path = SmartSpy;
@@ -119,7 +119,7 @@
 				513DE3682E8DDACC00C82071 /* AdkLib */,
 			);
 			productName = SmartSpy;
-			productReference = 513DE3662E8DDA9900C82071 /* SmartSpy.app */;
+			productReference = 513DE4BA2E8E753E00C82071 /* SmartSpy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -181,7 +181,6 @@
 			files = (
 				40A5A7632E8ABF5600742AAA /* SmartRewardsView.swift in Sources */,
 				408A2D452E8BC31300C41792 /* SmartGameScene.swift in Sources */,
-				4068CCF42E8A7BAC009DAE08 /* AppDelegate.swift in Sources */,
 				4068CCFC2E8A7BE6009DAE08 /* SmartMenuView.swift in Sources */,
 				40A5A7612E8AB8F200742AAA /* SmartShopView.swift in Sources */,
 				4068CD5C2E8A8970009DAE08 /* SmartOnboardView.swift in Sources */,
@@ -322,6 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SmartSpy/SmartSpy.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -359,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SmartSpy/SmartSpy.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";

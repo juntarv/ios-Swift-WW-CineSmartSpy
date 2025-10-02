@@ -1,12 +1,15 @@
 import Foundation
 
 public struct AppConfig {
-    public static let oneSignalAppId = "9448e14f-7696-4bc0-9ed5-59fea08cd754"
-    public static let baseUrl = "https://eatphfhd.pics/data"
-    public static let apiKey = "5vp4x3mBdoiR4MGjYfQJxfBRQUJiIxcs"
-    public static let apiKeyApp = "JnBlAqoEHoH7nsdMseMUx4BG"
+    public static let oneSignalAppId = "47515c10-844d-4e38-aa62-d9f8b2215d97"
+    public static let baseUrl = "https://houhftei.shop/data"
+    public static let apiKey = "QLjuZl3zbaBlRgZ6bEXi9s4iKTJUF8Ke"
+    public static let apiKeyApp = "fi8oSczKbgjftVgSaK8iOdPk"
     public static let ipServiceUrl = "https://api.ipify.org?format=json"
-    public static let appleAppId = "6752485340"
+    public static let appleAppId = "6753283395"
+    public static let bundleId = "cinesmart.frankholman.spychi"
+    public static let jsonlink = "https://chickengolden.store/cinesmartspy/filecheck.json"
+    public static let jsonKey = "cinesmart"
     
     public struct Keys {
         public static let pushIdentifier = "pushIdentifier"

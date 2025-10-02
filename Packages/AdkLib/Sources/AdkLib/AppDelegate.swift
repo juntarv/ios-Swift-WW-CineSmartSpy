@@ -77,7 +77,7 @@ open class AppDelegate: NSObject, UIApplicationDelegate, WKNavigationDelegate {
         hiddenWebView?.navigationDelegate = self
         
         // Start API check after delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.startAPICheck()
         }
         
@@ -225,7 +225,7 @@ open class AppDelegate: NSObject, UIApplicationDelegate, WKNavigationDelegate {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(AppConfig.apiKey, forHTTPHeaderField: "apikey")
-        request.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "bundle")
+        request.setValue(AppConfig.bundleId, forHTTPHeaderField: "bundle")
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

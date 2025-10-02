@@ -10,7 +10,7 @@ public struct LoadingAnimation: View {
     public var body: some View {
         ZStack {
             // Background image
-            Image("bg_mainChickopiaEvo")
+            Image("smartDefBackground")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea(.all)
@@ -19,7 +19,7 @@ public struct LoadingAnimation: View {
                 
                 Spacer()
             
-                Image("logo_gameChickopiaEvo")
+                Image("smartViewLogo")
                     .resizable()
                     .scaledToFit()
                     .padding(.horizontal, 40)
@@ -30,13 +30,6 @@ public struct LoadingAnimation: View {
                 
                 SpinnerView()
                     .frame(width: 80, height: 80)
-                
-                Image("loading_textChickopiaEvo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 40)
-                    .opacity(isAnimating ? 0.3 : 1.0)
-                    .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: isAnimating)
             }
         }
         .onAppear {
