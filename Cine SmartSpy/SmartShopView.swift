@@ -6,6 +6,7 @@ struct SmartShopView: View {
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     @EnvironmentObject private var globalManager: SmartGlobalManager
+    @State private var showAlert = false
     
     init(_ isPresented: Binding<Bool>) {
         self._isPresented = isPresented
@@ -18,7 +19,9 @@ struct SmartShopView: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: SmartScreen.width * 0.05) {
                     ForEach(SmartModelsEnum.allCases, id: \.self) { model in
-                        SmartShopCell(model)
+                        SmartShopCell(model) {
+                            showAlert = true
+                        }
                     }
                 }
                 .padding(.top, SmartScreen.width * 0.26)
@@ -49,6 +52,10 @@ struct SmartShopView: View {
             }
             .padding()
         }
+        
+        .alert("Oops! You need more coins to get this skin.", isPresented: $showAlert) {
+            Button("Ok", role: .cancel) {}
+        }
     }
 }
 
@@ -57,8 +64,10 @@ struct SmartShopCell: View {
     private let smartModel: SmartModelsEnum
     
     @State private var stateImage: UIImage = .buyCell
+    private let alertClosure: () -> ()
     
-    init(_ smartModel: SmartModelsEnum) {
+    init(_ smartModel: SmartModelsEnum, alertClosure: @escaping () -> ()) {
+        self.alertClosure = alertClosure
         self.smartModel = smartModel
     }
 
@@ -98,7 +107,7 @@ struct SmartShopCell: View {
             globalManager.selectedModel = smartModel.rawValue
             SmartDefaults.selectedModel = smartModel.rawValue
         } else {
-            guard globalManager.balance >= 25 else { return }
+            guard globalManager.balance >= 25 else { return alertClosure() }
             globalManager.balance -= 25
             SmartDefaults.balance -= 25
             SmartDefaults.append(reward: .smartRewardTwo)
