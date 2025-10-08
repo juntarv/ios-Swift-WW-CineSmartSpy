@@ -137,7 +137,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4068CCD42E8A79E2009DAE08 /* Build configuration list for PBXProject "SmartSpy" */;
+			buildConfigurationList = 4068CCD42E8A79E2009DAE08 /* Build configuration list for PBXProject "Cine SmartSpy" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -331,6 +331,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Cine SmartSpy/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Cine Smart Spy";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Have to ask for adding for proper appwork";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -373,6 +374,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Cine SmartSpy/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Cine Smart Spy";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Have to ask for adding for proper appwork";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -403,7 +405,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4068CCD42E8A79E2009DAE08 /* Build configuration list for PBXProject "SmartSpy" */ = {
+		4068CCD42E8A79E2009DAE08 /* Build configuration list for PBXProject "Cine SmartSpy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4068CCE22E8A79E3009DAE08 /* Debug */,
